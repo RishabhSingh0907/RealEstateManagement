@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction_result_style.css') }}">
+</head>
+<body>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <div class="display_results">
+            {% if result %}
+            <h3>Price Prediction Result:</h3>
+            <p><span style="text-decoration: underline; text-decoration-thickness: 2px;">RERA:</span> {{ result.rera }}</p>
+            <p><span>Number of Rooms:</span> {{ result.num_of_rooms }}</p>
+            <p><span>Square Feet:</span> {{ result.square_ft }}</p>
+            <p><span>Ready to Move:</span> {{ result.ready_to_move }}</p>
+            <p><span>Neighbourhood Region:</span> {{ result.neighbourhood_region }}</p>
+            <p><span>City:</span> {{ result.city }}</p>
+            <p><span>Posted By:</span> {{ result.posted_by }}</p>
+            <p><span>Predicted Price (In Lacs):</span> {{ result.price }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

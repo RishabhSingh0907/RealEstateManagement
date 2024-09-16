@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_users.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="users">
+        <h1>View Users</h1>
+        <div class="user-update-form">
+            <h2>Update User</h2>
+            <form method="POST" action="{{ url_for('user_approval') }}">
+                <label for="approval">Approval:</label>
+                <select id="approval" name="approval" required>
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="approved">Approve</option>
+                    <option value="not_approved">Not Approve</option>
+                </select><br>
+                <label for="user_type">User Type:</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="admin">Admin</option>
+                    <option value="client">Client</option>
+                    <option value="agent">Agent</option>
+                </select><br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>User Status</th>
+                            <th>Role</th>
+                            <th>Registration Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="selected_users" value="{{ user[0] }}">
+                            </td>
+                            <td>{{ user[0] }}</td>
+                            <td>{{ user[1] }}</td>
+                            <td>{{ user[2] }}</td>
+                            <td>{{ user[3] }}</td>
+                            <td>{{ user[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

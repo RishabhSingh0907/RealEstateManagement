@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/train_result_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <h1>Training Results</h1>
+        <div class="table-container">
+            {% for table in tables %}
+            <!-- <h2>{{ titles[loop.index0] }}</h2> -->
+            {{ table|safe }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

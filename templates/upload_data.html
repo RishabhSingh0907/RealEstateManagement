@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Dataset</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_data_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <div class="flash-messages">
+            {% if message %}
+                <p class="flash">{{ message }}</p>
+            {% endif %}
+        </div>
+        <h1>Upload Dataset</h1>
+        <form method="POST" action="/upload_data" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose CSV or Excel File:</label>
+                <input type="file" id="file" name="file" accept=".csv, .xlsx" required>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

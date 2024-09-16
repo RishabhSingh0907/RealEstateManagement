@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+    <style>
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <h1>Prediction Product</h1>
+        <div class="button-container">
+            <button id="individual-btn">Individual Prediction</button>
+            <button id="bulk-btn">Bulk Prediction</button>
+        </div>
+        
+        <div id="individual-form" class="visible">
+            {% include 'prediction_form.html' with context %}
+        </div>
+        
+        <div id="bulk-form" class="hidden">
+            {% include 'bulk_prediction.html' %}
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('individual-btn').addEventListener('click', function() {
+            document.getElementById('individual-form').classList.add('visible');
+            document.getElementById('individual-form').classList.remove('hidden');
+            document.getElementById('bulk-form').classList.add('hidden');
+            document.getElementById('bulk-form').classList.remove('visible');
+        });
+        
+        document.getElementById('bulk-btn').addEventListener('click', function() {
+            document.getElementById('bulk-form').classList.add('visible');
+            document.getElementById('bulk-form').classList.remove('hidden');
+            document.getElementById('individual-form').classList.add('hidden');
+            document.getElementById('individual-form').classList.remove('visible');
+        });
+    </script>
+</body>
+</html>

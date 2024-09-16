@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/agent_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="dashboard">
+        <h1>Agent Dashboard</h1>
+        <div class="container">
+            <div class="container-row">
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('view_property_listings') }}">
+                        <div class="link-content">
+                            <h3>View Property Listings</h3>
+                            <p>View all the available property lists</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('add_property_listing') }}">
+                        <div class="link-content">
+                            <h3>Add Property Listing</h3>
+                            <p>Add property listing into the database</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container-row">
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('download_property_data') }}">
+                        <div class="link-content">
+                            <h3>Download Property Data</h3>
+                            <p>Download all the listed property data from the database</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('prediction_history') }}">
+                        <div class="link-content">
+                            <h3>Prediction History</h3>
+                            <p>View the predictions history, previous predictions</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

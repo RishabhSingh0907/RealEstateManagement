@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Purchase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/purchase_confirm_style.css') }}">
+</head>
+<body>
+    <h1>Confirm Purchase</h1>
+    <div class = "property_description">
+        <h2>Property Details</h2>
+        <h4>Property ID: </h4>
+        <p>{{ property[0] }}</p>
+        <h4>Address: </h4>
+        <p>{{ property[1] }}</p>
+        <h4>City: </h4>
+        <p>{{ property[2] }}</p>
+        <h4>State: </h4>
+        <p>{{ property[3] }}</p>
+        <h4>Price: </h4>
+        <p>{{ property[4] }}</p>
+        <h4>Bedrooms</h4>
+        <p>{{ property[5] }}</p>
+        <h4>Bathrooms</h4>
+        <p>{{ property[6] }}</p>
+        <h4>Area (sq. ft)</h4>
+        <p>{{ property[7] }}</p>
+        <h4>Description</h4>
+        <p>{{ property[8] }}</p>
+        <h4>Status</h4>
+        <p>{{ property[9] }}</p>
+        <h4>Created on</h4>
+        <p>{{ property[10] }}</p>
+        <h4>Updated on</h4> 
+        <p>{{ property[11] }}</p>
+        <h4>Seller contact</h4> 
+        <p>{{ property[12] }}</p>
+        <h4>Seller email</h4> 
+        <p>{{ property[13] }}</p>
+    </div>
+    <div class="customer-info">
+        <h2>Contact Seller</h2>
+        <form method="post" action="{{ url_for('confirm_purchase', property_id=property[0]) }}">
+            <label for="contact_name">Your Name:</label>
+            <input type="text" id="buyer_name" name="buyer_name" required><br>
+
+            <label for="contact_email">Your Email:</label>
+            <input type="email" id="buyer_email" name="buyer_email" required><br>
+            
+            <label for="contact_message">Message:</label><br>
+            <textarea id="buyer_message" name="buyer_message" required></textarea><br>
+            
+            <label for="contact_name">Contact Number:</label>
+            <input type="text" id="buyer_contact_number" name="buyer_contact_number" required><br>
+            
+            <input type="submit" value="Confirm Purchase Interest">
+        </form>
+    </div>
+</body>
+</html>

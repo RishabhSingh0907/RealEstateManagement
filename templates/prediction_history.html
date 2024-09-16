@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #2c3e50; /* Dark blue color for navbar */
+            overflow: hidden;
+            width: 100%; /* Extend the navbar to the entire page width */
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .container {
+            margin-top: 60px; 
+            padding: 20px;
+        }
+        .message {
+            background-color: #cacaca;
+            border-left: 6px solid #000000;
+            margin: 20px;
+            padding: 15px;
+            font-size: 18px;
+        }
+        .predictions {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .predictions h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <div class="predictions">
+            <h3>Recent Predictions</h3>
+            {% if predictions %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>RERA</th>
+                        <th>Rooms</th>
+                        <th>Square Feet</th>
+                        <th>Ready to Move</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>City Code</th>
+                        <th>Posted by Builder</th>
+                        <th>Posted by Dealer</th>
+                        <th>Posted by Owner</th>
+                        <th>Price(In Lacs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prediction in predictions %}
+                    <tr>
+                        <td>{{ prediction[0] }}</td>
+                        <td>{{ prediction[1] }}</td>
+                        <td>{{ prediction[2] }}</td>
+                        <td>{{ prediction[3] }}</td>
+                        <td>{{ prediction[4] }}</td>
+                        <td>{{ prediction[5] }}</td>
+                        <td>{{ prediction[6] }}</td>
+                        <td>{{ prediction[7] }}</td>
+                        <td>{{ prediction[8] }}</td>
+                        <td>{{ prediction[9] }}</td>
+                        <td>{{ prediction[10] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No predictions found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_style.css') }}">
+</head>
+<body>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="dashboard">
+        <h1>Welcome to Admin Dashboard</h1>
+        <div class="container">
+            <div class="container-row">
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('view_users') }}">
+                        <div class="link-content">
+                            <h3>View Users</h3>
+                            <p>View details of the users</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('download_users_data') }}">
+                        <div class="link-content">
+                            <h3>Download Users Data</h3>
+                            <p>Download user data from the database</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('view_logged_in_users') }}">
+                        <div class="link-content">
+                            <h3>View Logged In Users</h3>
+                            <p>View all the logged-in user details</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container-row">
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('activate') }}">
+                        <div class="link-content">
+                            <h3>Model History</h3>
+                            <p>View details of the models saved</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('upload_dataset') }}">
+                        <div class="link-content">
+                            <h3>Model Training</h3>
+                            <p>Train model on the uploaded dataset</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dashboard-content-link">
+                    <a href="{{ url_for('prediction_history') }}">
+                        <div class="link-content">
+                            <h3>Prediction History</h3>
+                            <p>View the predictions history, previous predictions</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

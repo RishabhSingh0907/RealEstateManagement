@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/model_history_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="flash-messages">
+        {% if message %}
+            <p class="flash">{{ message }}</p>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Model History</h1>
+        <div class="activation-form">
+            <form method="POST" action="/activate">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Model Name</th>
+                                <th>Train Score</th>
+                                <th>Test Score</th>
+                                <th>MAE</th>
+                                <th>RMSE</th>
+                                <th>R2</th>
+                                <th>Adjusted R2</th>
+                                <th>Timestamp</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in payload %}
+                            <tr>
+                                <td><input type="checkbox" name="check" value="{{ item.id }}"></td>
+                                <td>{{ item.model_name }}</td>
+                                <td>{{ item.model_train_score }}</td>
+                                <td>{{ item.model_test_score }}</td>
+                                <td>{{ item.MAE }}</td>
+                                <td>{{ item.RMSE }}</td>
+                                <td>{{ item.R2 }}</td>
+                                <td>{{ item.Adjusted_R2 }}</td>
+                                <td>{{ item.model_timestamp }}</td>
+                                <td>{{ item.model_status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Activate Selected Model</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

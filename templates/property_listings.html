@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Property Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/property_listing_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="table-container">
+        <h1>Agent Property Listings</h1>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property ID</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Price (₹)</th>
+                        <th>Bedrooms</th>
+                        <th>Bathrooms</th>
+                        <th>Area (sq. ft)</th>
+                        <th>Status</th>
+                        <th>seller ID</th>
+                        <th>Seller Contact</th>
+                        <th>Seller email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listing in listings %}
+                    <tr>
+                        <td>{{ listing[0] }}</td>
+                        <td>{{ listing[1] }}</td>
+                        <td>{{ listing[2] }}</td>
+                        <td>{{ listing[3] }}</td>
+                        <td>{{ listing[4] }}</td>
+                        <td>{{ listing[5] }}</td>
+                        <td>{{ listing[6] }}</td>
+                        <td>{{ listing[7] }}</td>
+                        <td>{{ listing[8] }}</td>
+                        <td>{{ listing[9] }}</td>
+                        <td>{{ listing[10] }}</td>
+                        <td>{{ listing[11] }}</td>
+                        <!-- <td>{{ listing[12] }}</td> -->
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{{ url_for('update_property_listing', listing_id=listing[0]) }}" class="update-button">Update</a>
+                                <!-- <a href="{{ url_for('delete_property_listing', listing_id=listing[0]) }}" class="delete-button">Delete</a> -->
+                            </div>
+                            <div class="action-buttons">
+                                <!-- <a href="{{ url_for('update_property_listing', listing_id=listing[0]) }}" class="update-button">Update</a> -->
+                                <a href="{{ url_for('delete_property_listing', listing_id=listing[0]) }}" class="delete-button">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

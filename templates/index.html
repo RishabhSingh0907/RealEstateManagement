@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Management and Prediction System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .message {
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 10px;
+        }
+
+        .box a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .box p {
+            margin: 10px 0;
+        }
+
+        .prediction {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .prediction .box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    <div class="section">
+        <h1>Welcome to the House Price Management and Prediction System</h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="box">
+                <a href="/login">Login</a>
+            </div>
+            <p>or</p>
+            <div class="box">
+                <a href="/register">Register</a>
+            </div>
+        </div>
+    </div>
+<!-- 
+    <div class="prediction">
+        {% include 'prediction_form.html' with context %}
+    </div>
+
+    <div class="prediction_result">
+        {% if result %}
+            <h3>Price Prediction Result:</h3>
+            <p>RERA: {{ result.rera }}</p>
+            <p>Number of Rooms: {{ result.num_of_rooms }}</p>
+            <p>Square Feet: {{ result.square_ft }}</p>
+            <p>Ready to Move: {{ result.ready_to_move }}</p>
+            <p>Neighbourhood Region: {{ result.neighbourhood_region }}</p>
+            <p>City: {{ result.city }}</p>
+            <p>Posted By: {{ result.posted_by }}</p>
+            <p>Predicted Price (In Lacs): {{ result.price }}</p>
+        {% endif %}
+    </div>
+     -->
+</body>
+</html>

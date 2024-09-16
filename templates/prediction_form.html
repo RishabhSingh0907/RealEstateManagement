@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction_form_style.css') }}">
+</head>
+<body>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    <div class="prediction-form">
+        <h2>House Price Prediction</h2>
+        <form method="post" action="{{ url_for('predict_individual') }}">
+            <label for="rera">RERA:</label>
+            <select id="rera" name="rera" required>
+                <option value=""disabled selected>--Select--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <input type="hidden" name="rera" value="not_selected">
+
+            <label for="num_of_rooms">Number of Rooms:</label>
+            <input type="number" id="num_of_rooms" name="num_of_rooms" min="1" required><br>
+
+            <label for="square_ft">Square Feet:</label>
+            <input type="number" id="square_ft" name="square_ft" step="0.01" min="1" required><br>
+
+            <label for="ready_to_move">Ready to Move:</label>
+            <select id="ready_to_move" name="ready_to_move" required>
+                <option value=""disabled selected>--Select--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="neighbourhood_region">Neighbourhood Region:</label>
+            <input type="text" id="neighbourhood_region" name="neighbourhood_region" required><br>
+
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="" disabled selected>--Select--</option>
+                {% for city in cities %}
+                    <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="posted_by">Posted By:</label>
+            <select id="posted_by" name="posted_by" required>
+                <option value=""disabled selected>--Select--</option>
+                <option value="Builder">Builder</option>
+                <option value="Dealer">Dealer</option>
+                <option value="Owner">Owner</option>
+            </select><br>
+
+            <input type="submit" value="Predict Price">
+        </form>
+
+        {% if result %}
+            <h3>Price Prediction Result:</h3>
+            <p>RERA: {{ result.rera }}</p>
+            <p>Number of Rooms: {{ result.num_of_rooms }}</p>
+            <p>Square Feet: {{ result.square_ft }}</p>
+            <p>Ready to Move: {{ result.ready_to_move }}</p>
+            <p>Neighbourhood Region: {{ result.neighbourhood_region }}</p>
+            <p>City: {{ result.city }}</p>
+            <p>Posted By: {{ result.posted_by }}</p>
+            <p>Predicted Price (In Lacs): {{ result.price }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

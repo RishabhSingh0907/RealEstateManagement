@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Bulk Prediction File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_bulk.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <h1>Upload Bulk Prediction File</h1>
+        <form action="/predict_bulk" method="post" enctype="multipart/form-data">
+            <label for="file">Select CSV file:</label>
+            <input type="file" id="file" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

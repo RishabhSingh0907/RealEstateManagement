@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tran_data_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="flash-messages">
+        {% if message %}
+            <p class="flash">{{ message }}</p>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Preview Processed Data</h1>
+        <div class="Preview-form">
+            <form method="POST" action="/train_models">
+                <label for="target">Target Variable:</label>
+                <input type="text" name="target" id="target" required>
+                <label for="test_dist">Test Distribution:</label>
+                <input type="number" step="0.01" name="test_dist" id="test_dist" required>
+                <button type="submit">Train Models</button>
+            </form>
+        </div>
+        <div class="table-container">
+            {% for table in tables %}
+            <!-- <h2>{{ titles[loop.index0] }}</h2> -->
+            {{ table|safe }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

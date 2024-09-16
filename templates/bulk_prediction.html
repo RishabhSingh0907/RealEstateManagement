@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulk_prediction.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="bulk-prediction-form">
+            <h2>Upload File for Bulk Prediction</h2>
+            <form method="post" action="{{ url_for('predict_bulk') }}" enctype="multipart/form-data">
+                <label for="file">Upload CSV File:</label>
+                <input type="file" id="file" name="file" accept=".csv" required><br>
+                <input type="submit" value="Upload and Predict">
+            </form>
+        </div>
+        {% if results %}
+        <div class="bulk-data">
+            <h1>Bulk Prediction Results</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>RERA</th>
+                        <th>NUM_OF_ROOMS</th>
+                        <th>AREA(SQ.FT)</th>
+                        <th>READY_TO_MOVE</th>
+                        <th>LONGITUDE</th>
+                        <th>LATITUDE</th>
+                        <th>CITY</th>
+                        <th>AVG_SQ_FT_PER_ROOM</th>
+                        <th>POSTED_BY_BUILDER</th>
+                        <th>POSTED_BY_DEALER</th>
+                        <th>POSTED_BY_OWNER</th>
+                        <th>PREDICTIONS</th>
+                        <th>Date Predicted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in results %}
+                    <tr>
+                        <td>{{ item.ID }}</td>
+                        <td>{{ item.RERA }}</td>
+                        <td>{{ item.NUM_OF_ROOMS }}</td>
+                        <td>{{ item['AREA(SQ.FT)'] }}</td>
+                        <td>{{ item.READY_TO_MOVE }}</td>
+                        <td>{{ item.LONGITUDE }}</td>
+                        <td>{{ item.LATITUDE }}</td>
+                        <td>{{ item.CITY }}</td>
+                        <td>{{ item.AVG_SQ_FT_PER_ROOM }}</td>
+                        <td>{{ item.POSTED_BY_BUILDER }}</td>
+                        <td>{{ item.POSTED_BY_DEALER }}</td>
+                        <td>{{ item.POSTED_BY_OWNER }}</td>
+                        <td>{{ item.PREDICTIONS }}</td>
+                        <td>{{ item.dt_pred }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

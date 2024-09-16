@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Properties</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_properties.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="property-description">
+        <h1>Available Properties</h1>
+        <ul class="property-list">
+            {% for property in properties %}
+                <li class="property-item">
+                    <div class="property-details">
+                        <p><strong>Address:</strong> {{ property[1] }}</p>
+                        <p><strong>City:</strong> {{ property[2] }}</p>
+                        <p><strong>State:</strong> {{ property[3] }}</p>
+                        <p><strong>Price:</strong> {{ property[4] }}</p>
+                        <p><strong>Bedrooms:</strong> {{ property[5] }}</p>
+                        <p><strong>Bathrooms:</strong> {{ property[6] }}</p>
+                        <p><strong>Area (Sq. ft):</strong> {{ property[7] }}</p>
+                        <p><strong>Status:</strong> {{ property[8] }}</p>
+                        <p><strong>Seller Contact:</strong> {{ property[9] }}</p>
+                        <p><strong>Seller email:</strong> {{ property[10] }}</p>
+                    </div>
+                    <form action="{{ url_for('buy_property', property_id=property[0]) }}" method="POST">
+                        <button type="submit" class="buy-button">Buy Property</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
