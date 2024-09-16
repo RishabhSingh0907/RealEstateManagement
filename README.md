@@ -102,19 +102,6 @@ The app will be accessible at `http://127.0.0.1:5000/` by default.
 - **Admin Role**: Admins can upload datasets, train models, and activate specific models for prediction.
 - **Prediction Process**: Agents and clients can predict property prices based on user inputs such as RERA, number of rooms, area (sq. ft.), and city.
 
-## API Endpoints
-
-Here are some of the key routes:
-
-| Route                     | Method | Role  | Description                                    |
-|----------------------------|--------|-------|------------------------------------------------|
-| `/login`                   | GET    | All   | User login                                    |
-| `/dashboard`               | GET    | All   | Redirects to the appropriate user dashboard    |
-| `/admin/user_approval`     | POST   | Admin | Approve/disapprove users                      |
-| `/agent/property_listings` | GET    | Agent | View all property listings                    |
-| `/client/prediction`       | POST   | Client| Make individual property price predictions    |
-| `/admin/train_models`      | POST   | Admin | Train machine learning models                 |
-
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
